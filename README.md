@@ -10,12 +10,12 @@ O projeto também busca compreender os riscos relacionados ao uso de senhas frac
 
 2- Ambiente utilizado
 
-Sistema operacional: Kali Linux
-Virtualização: Oracle VirtualBox
-Máquina vulnerável: Metasploitable 2
-Aplicação WEB: DVWA
-Ferramenta de auditoria: Medusa, Nmap
-Tipo de rede: Host-Only
+Sistema operacional: Kali Linux;
+Virtualização: Oracle VirtualBox;
+Máquina vulnerável: Metasploitable 2;
+Aplicação WEB: DVWA;
+Ferramenta de auditoria: Medusa, Nmap;
+Tipo de rede: Host-Only;
 
 
 <img width="1920" height="1025" alt="Captura de tela de 2026-11-02 19-35-37" src="https://github.com/user-attachments/assets/4a1d2188-1c76-46ad-9bb2-35d95456fbdb" />
