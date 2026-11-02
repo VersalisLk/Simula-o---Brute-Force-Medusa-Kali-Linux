@@ -41,6 +41,10 @@ comandos utilizados:
 Resultados:
 Como esperado, obtivemos conhecimento do usuário e da senha, necessária para ter acesso ao serviço FTP do alvo.
 
+<img width="794" height="602" alt="Captura de tela de 2026-11-02 19-51-38" src="https://github.com/user-attachments/assets/166dc7db-4b67-46d8-93cf-fd953fd35a16" />
+<img width="806" height="392" alt="Captura de tela de 2026-11-02 19-49-37" src="https://github.com/user-attachments/assets/6a2c2027-2f0b-4faa-90ce-549f4ebf74c5" />
+
+
 Analise:
 O serviço pode apresentar risco se mal configurado, se utilizado com senhas fracas, podendo ser substituido por uma versão mais segura (SFTP) quando aplicável
 
@@ -66,6 +70,8 @@ Comandos utilizados:
 
 Resultado:
 Após a execução do comando o Medusa iniciou o ataque, descobrindo as credenciais poucos segundos após o inicio.
+
+<img width="791" height="686" alt="Captura de tela de 2026-11-02 20-18-25" src="https://github.com/user-attachments/assets/f3d2b8d0-5a0c-4336-96b1-f41e8257fba8" />
 
 
 Análise:
