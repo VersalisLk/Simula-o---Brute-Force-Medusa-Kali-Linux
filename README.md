@@ -12,11 +12,11 @@ O projeto também busca compreender os riscos relacionados ao uso de senhas frac
 2- Ambiente utilizado
 
 Sistema operacional: Kali Linux;
-Virtualização: Oracle VirtualBox;
-Máquina vulnerável: Metasploitable 2;
-Aplicação WEB: DVWA;
-Ferramenta de auditoria: Medusa, Nmap;
-Tipo de rede: Host-Only;
+<br>Virtualização: Oracle VirtualBox;
+<br>Máquina vulnerável: Metasploitable 2;
+<br>Aplicação WEB: DVWA;
+<br>Ferramenta de auditoria: Medusa, Nmap;
+<br>Tipo de rede: Host-Only;
 
 
 <img width="1920" height="1025" alt="Captura de tela de 2026-11-02 19-35-37" src="https://github.com/user-attachments/assets/4a1d2188-1c76-46ad-9bb2-35d95456fbdb" />
@@ -36,8 +36,8 @@ Foi utilizado o Kali para realizar tentativas de autenticação contra o serviç
 Após a auditoria de portas, verificação completa com nmap, foi utilizado duas listas, uma contendo senhas e outra usuários para testar diversas combinações, tendo assim o êxito na conclusão do teste.
 
 comandos utilizados:
-'nmap -sS -sV 192.168.52.106 ' - Para fazer auditoria de todas as portas abertas no ip vulnerável juntamente com suas versões.
-'medusa -h IP -U users.txt -P pass.txt -M ftp -t 6' - Para fazer o processo de brute-force utilizando as wordlists.
+<br>'nmap -sS -sV 192.168.52.106 ' - Para fazer auditoria de todas as portas abertas no ip vulnerável juntamente com suas versões.
+<br>'medusa -h IP -U users.txt -P pass.txt -M ftp -t 6' - Para fazer o processo de brute-force utilizando as wordlists.
 
 Resultados:
 Como esperado, obtivemos conhecimento do usuário e da senha, necessária para ter acesso ao serviço FTP do alvo.
@@ -67,7 +67,7 @@ Foi utilizado um formulário de autenticação do DVWA para simular tentativas a
 Esse teste permitiu observar como as ferramentas podem automatizar o envio de credenciais e identificar possíveis falhas na aplicação em questão.
 
 Comandos utilizados:
-"medusa -h 192.168.56.102 -U users.txt -P pass.txt -M http \ -m PAGE:'/dvwa/login.php' \ -m FORM:'username=^USER^&password=^PASS^&Login=Login' \ -m 'FAIL=Login failed' -t 6 -v 4"
+<br>"medusa -h 192.168.56.102 -U users.txt -P pass.txt -M http \ -m PAGE:'/dvwa/login.php' \ -m FORM:'username=^USER^&password=^PASS^&Login=Login' \ -m 'FAIL=Login failed' -t 6 -v 4"
 
 Resultado:
 Após a execução do comando o Medusa iniciou o ataque, descobrindo as credenciais poucos segundos após o inicio.
@@ -96,21 +96,21 @@ Após a enumeração, iniciamos o ataque utilizando o Medusa, obtendo as credenc
 
 <img width="802" height="37" alt="Captura de tela de 2026-11-03 20-03-00" src="https://github.com/user-attachments/assets/358ac724-9b8f-43a3-a585-d4511b342039" />
 
-Comandos utilizados:
-'enum4linux -a 192.168.56.102 | tee enum4_output.txt' - Realizar a enumeração e documentar no txt mencionado.
-'less enum4_output.txt' - Abrir o txt documentado e realizar a leitura.
-'grep -oP "user:[\K[^\]]+" enum4_output.txt > smb_users.txt' - Na aula não é ensinado este comando, mas surgiu uma duvida de automatizar a coleta de users e eu encontrei este comando, achei interessante em compartilhar este conhecimento.
-'medusa -h 192.168.56.102 -U smb_users.txt -P senhas_spray.txt -M smbnt -t 2 -T 50'
-'smbclient -L //192.168.56.102 -U msfadmin'
+Comandos utilizados:<br>
+<br>'enum4linux -a 192.168.56.102 | tee enum4_output.txt' - Realizar a enumeração e documentar no txt mencionado.
+<br>'less enum4_output.txt' - Abrir o txt documentado e realizar a leitura.
+<br>'grep -oP "user:[\K[^\]]+" enum4_output.txt > smb_users.txt' - Na aula não é ensinado este comando, mas surgiu uma duvida de automatizar a coleta de users e eu encontrei este comando, achei interessante em compartilhar este conhecimento.
+<br>'medusa -h 192.168.56.102 -U smb_users.txt -P senhas_spray.txt -M smbnt -t 2 -T 50'
+<br>'smbclient -L //192.168.56.102 -U msfadmin'
 
 
-Resultado obtido: 
-Após salvar os usuarios, obtivemos uma lista completa de possíveis alvos para realizar a descoberta da senha, tento sucesso, conseguimos realizar a autenticação.
+Resultado obtido:
+<br>Após salvar os usuarios, obtivemos uma lista completa de possíveis alvos para realizar a descoberta da senha, tento sucesso, conseguimos realizar a autenticação.
 
 <img width="806" height="344" alt="Captura de tela de 2026-11-03 20-09-40" src="https://github.com/user-attachments/assets/3b16d9b6-7304-41a4-95f8-7b0403360e9f" />
 
 Medidas de prevenção:
-<br>Utilização de senhas fortes; 
+<br><br>Utilização de senhas fortes; 
 <br>Monitoramento de autenticaçõe; 
 <br>Politicas de bloqueio e proteção de conta; 
 <br>Bloqueios de Ip's após várias tentativas de login;
