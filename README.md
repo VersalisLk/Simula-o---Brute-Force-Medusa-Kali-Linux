@@ -110,11 +110,11 @@ Após salvar os usuarios, obtivemos uma lista completa de possíveis alvos para 
 <img width="806" height="344" alt="Captura de tela de 2026-11-03 20-09-40" src="https://github.com/user-attachments/assets/3b16d9b6-7304-41a4-95f8-7b0403360e9f" />
 
 Medidas de prevenção:
-Utilização de senhas fortes; 
-Monitoramento de autenticaçõe; 
-Politicas de bloqueio e proteção de conta; 
-Bloqueios de Ip's após várias tentativas de login;
-Firewall.
+<br>Utilização de senhas fortes; 
+<br>Monitoramento de autenticaçõe; 
+<br>Politicas de bloqueio e proteção de conta; 
+<br>Bloqueios de Ip's após várias tentativas de login;
+<br>Firewall.
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -126,5 +126,5 @@ As simulações também mostram a importancia de políticas de senhas, monitoram
 O projeto contribuiu para ampliar meus conhecimentos sobre ferramentas de auditoria, vulnerabilidades de autenticação e medidaa de prevenção em segurança da informação.
 
 !!!AVISO!!!
-Todas as atividades deste projeto possuem finalidade (EXCLUSIVAMENTE) educacional e são realizadas em ambiente de laboratório controlado.
-(Nenhum teste deve ser executado contra sistemas, serviços ou contas sem autorização!)
+<br>Todas as atividades deste projeto possuem finalidade (EXCLUSIVAMENTE) educacional e são realizadas em ambiente de laboratório controlado.
+<br>(Nenhum teste deve ser executado contra sistemas, serviços ou contas sem autorização!)
