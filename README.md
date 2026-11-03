@@ -1,6 +1,7 @@
 # Simulacao-de-Brute-Force-Medusa-Kali-Linux
 Simulando um Ataque de Brute Force de Senhas com Medusa e Kali Linux
 
+DIO
 
 1- Introdução
 
@@ -35,7 +36,7 @@ Foi utilizado o Kali para realizar tentativas de autenticação contra o serviç
 Após a auditoria de portas, verificação completa com nmap, foi utilizado duas listas, uma contendo senhas e outra usuários para testar diversas combinações, tendo assim o êxito na conclusão do teste.
 
 comandos utilizados:
-'nmap -sS -sV IP ' - Para fazer auditoria de todas as portas abertas no ip vulnerável juntamente com suas versões.
+'nmap -sS -sV 192.168.52.106 ' - Para fazer auditoria de todas as portas abertas no ip vulnerável juntamente com suas versões.
 'medusa -h IP -U users.txt -P pass.txt -M ftp -t 6' - Para fazer o processo de brute-force utilizando as wordlists.
 
 Resultados:
@@ -82,3 +83,48 @@ Limitar as tentativas de login, adotar a politica de senhar fortes, verificaçã
 
 -------------------------------------------------------------------------------------------------------------
 Terceiro cenário - Password Spraying em SMB
+
+Objetivo:
+Foi utilizada a técnica de Password Spraying para obter acesso ao sistema do smbclient
+
+Conceito da técnica:
+Password spraying é uma tecnica que consiste em testar a mesma senha contrá vários usuários do ip alvo.
+
+Procedimento:
+Ao iniciar o comando enum4linux, obtemos uma enumeração automatizada do alvo, fazendo uma coleta de usuários.
+Após a enumeração, iniciamos o ataque utilizando o Medusa, obtendo as credenciais necessárias para realizar a autenticação através do smbclient.
+
+<img width="802" height="37" alt="Captura de tela de 2026-11-03 20-03-00" src="https://github.com/user-attachments/assets/358ac724-9b8f-43a3-a585-d4511b342039" />
+
+Comandos utilizados:
+'enum4linux -a 192.168.56.102 | tee enum4_output.txt' - Realizar a enumeração e documentar no txt mencionado.
+'less enum4_output.txt' - Abrir o txt documentado e realizar a leitura.
+'grep -oP "user:[\K[^\]]+" enum4_output.txt > smb_users.txt' - Na aula não é ensinado este comando, mas surgiu uma duvida de automatizar a coleta de users e eu encontrei este comando, achei interessante em compartilhar este conhecimento.
+'medusa -h 192.168.56.102 -U smb_users.txt -P senhas_spray.txt -M smbnt -t 2 -T 50'
+'smbclient -L //192.168.56.102 -U msfadmin'
+
+
+Resultado obtido: 
+Após salvar os usuarios, obtivemos uma lista completa de possíveis alvos para realizar a descoberta da senha, tento sucesso, conseguimos realizar a autenticação.
+
+<img width="806" height="344" alt="Captura de tela de 2026-11-03 20-09-40" src="https://github.com/user-attachments/assets/3b16d9b6-7304-41a4-95f8-7b0403360e9f" />
+
+Medidas de prevenção:
+Utilização de senhas fortes; 
+Monitoramento de autenticaçõe; 
+Politicas de bloqueio e proteção de conta; 
+Bloqueios de Ip's após várias tentativas de login;
+Firewall.
+
+------------------------------------------------------------------------------------------------------------------
+
+Conclusão:
+Ao realizarmos esses testes, podemos compreender na prática como os ataques de força bruta e password spraying podem comprometer serviços e aplicações que não possuem mecanismos adequados de proteção.
+
+As simulações também mostram a importancia de políticas de senhas, monitoramento de autenticação, limitação de tentativas e medidas adicionais de segurança.
+
+O projeto contribuiu para ampliar meus conhecimentos sobre ferramentas de auditoria, vulnerabilidades de autenticação e medidaa de prevenção em segurança da informação.
+
+!!!AVISO!!!
+Todas as atividades deste projeto possuem finalidade (EXCLUSIVAMENTE) educacional e são realizadas em ambiente de laboratório controlado.
+(Nenhum teste deve ser executado contra sistemas, serviços ou contas sem autorização!)
